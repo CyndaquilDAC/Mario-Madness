@@ -6,7 +6,7 @@ import haxe.Timer;
 
 class YCBUEndingShader extends FlxShader
 {
-	@:glFragmentSource('
+  @:glFragmentSource('
         #pragma header
         #define LINES1 16.0
         #define LINES2 32.0
@@ -73,16 +73,16 @@ class YCBUEndingShader extends FlxShader
             }
         }
     ')
-	public function new()
-	{
-		super();
-		seed.value = [Timer.stamp()];
-		intensity.value = [0.0];
-	}
+  public function new()
+  {
+    super();
+    seed.value = [Timer.stamp()];
+    intensity.value = [0.0];
+  }
 
-	public function update(amount:Float, elapsed:Float)
-	{
-		seed.value[0] += elapsed;
-		intensity.value[0] = FlxMath.bound(intensity.value[0] + amount, 0, 1);
-	}
+  public function update(amount:Float, elapsed:Float)
+  {
+    seed.value[0] += elapsed;
+    intensity.value[0] = FlxMath.bound(intensity.value[0] + amount, 0, 1);
+  }
 }

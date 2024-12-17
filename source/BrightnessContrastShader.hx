@@ -4,7 +4,7 @@ import flixel.system.FlxAssets.FlxShader;
 
 class BrightnessContrastShader extends FlxShader
 {
-	@:glFragmentSource('
+  @:glFragmentSource('
         #pragma header
 
         uniform float brightness;
@@ -17,10 +17,10 @@ class BrightnessContrastShader extends FlxShader
             gl_FragColor.rgb *= max(brightness, 0.);
         }
     ')
-	public function new()
-	{
-		super();
-		brightness.value = [1.0];
-		contrast.value = [1.0];
-	}
+  public function new()
+  {
+    super();
+    brightness.value = [1.0];
+    contrast.value = [1.0];
+  }
 }

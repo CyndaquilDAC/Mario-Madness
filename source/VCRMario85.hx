@@ -4,7 +4,7 @@ import flixel.system.FlxAssets.FlxShader;
 
 class VCRMario85 extends FlxShader // https://www.shadertoy.com/view/ldjGzV and https://www.shadertoy.com/view/Ms23DR and https://www.shadertoy.com/view/MsXGD4 and https://www.shadertoy.com/view/Xtccz4
 {
-	@glFragmentSource('
+  @glFragmentSource('
   #pragma header
 
   uniform float time;
@@ -91,14 +91,14 @@ class VCRMario85 extends FlxShader // https://www.shadertoy.com/view/ldjGzV and 
       gl_FragColor = vec4(color, alpha);
   }
   ')
-	public function new()
-	{
-		super();
-		this.time.value = [0];
-	}
+  public function new()
+  {
+    super();
+    this.time.value = [0];
+  }
 
-	public function update(elapsed:Float)
-	{
-		this.time.value[0] += elapsed;
-	}
+  public function update(elapsed:Float)
+  {
+    this.time.value[0] += elapsed;
+  }
 }

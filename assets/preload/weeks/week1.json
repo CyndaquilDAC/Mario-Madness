@@ -1,21 +1,17 @@
 {
-	"songs": [
-		["Its a me", "marioex", [71, 15, 15]],
-		["Starman-Slaughter", "mario-land", [71, 15, 15]]
-	],
+  "songs": [
+    ["Its A Me", "marioex", [71, 15, 15]],
+    ["Starman-Slaughter", "mario-land", [71, 15, 15]]
+  ],
 
-	"weekCharacters": [
-		"dad",
-		"bf",
-		"gf"
-	],
-	"weekBackground": "stage",
+  "weekCharacters": ["dad", "bf", "gf"],
+  "weekBackground": "stage",
 
-	"storyName": "Daddy Dearest",
-	"weekBefore": "tutorial",
-	"weekName": "Week 1",
-	"startUnlocked": true,
+  "storyName": "Daddy Dearest",
+  "weekBefore": "tutorial",
+  "weekName": "Week 1",
+  "startUnlocked": true,
 
-	"hideStoryMode": false,
-	"hideFreeplay": false
+  "hideStoryMode": false,
+  "hideFreeplay": false
 }

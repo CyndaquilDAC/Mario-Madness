@@ -4,7 +4,7 @@ import flixel.system.FlxAssets.FlxShader;
 
 class TwoDinThreeD extends FlxShader
 {
-	@glFragmentSource('
+  @glFragmentSource('
         #pragma header
 
         uniform float blur;
@@ -30,17 +30,17 @@ class TwoDinThreeD extends FlxShader
                 (uv.y - yOff / openfl_TextureSize.y) * 4.0 + 0.15), flixel_texture2D(bitmap, uv).a); // fuck this gradient
         }
     ')
-	public function new(blur:Float, gradMax:Float, tiltDeg:Float)
-	{
-		super();
-		this.blur.value = [blur];
-		this.gradMax.value = [gradMax];
-		this.tiltDeg.value = [tiltDeg];
-	}
+  public function new(blur:Float, gradMax:Float, tiltDeg:Float)
+  {
+    super();
+    this.blur.value = [blur];
+    this.gradMax.value = [gradMax];
+    this.tiltDeg.value = [tiltDeg];
+  }
 
-	public function setXandY(x:Float, y:Float)
-	{
-		xOff.value = [x];
-		yOff.value = [y];
-	}
+  public function setXandY(x:Float, y:Float)
+  {
+    xOff.value = [x];
+    yOff.value = [y];
+  }
 }

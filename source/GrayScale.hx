@@ -4,7 +4,7 @@ import flixel.system.FlxAssets.FlxShader;
 
 class GrayScale extends FlxShader
 { // https://www.shadertoy.com/view/tllSz2
-	@glFragmentSource('
+  @glFragmentSource('
         #pragma header
 
         void main()
@@ -17,8 +17,8 @@ class GrayScale extends FlxShader
         
         }
     ')
-	public function new()
-	{
-		super();
-	}
+  public function new()
+  {
+    super();
+  }
 }

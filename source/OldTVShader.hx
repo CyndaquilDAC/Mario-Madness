@@ -6,7 +6,7 @@ import haxe.Timer;
 
 class OldTVShader extends FlxShader
 {
-	@:glFragmentSource('
+  @:glFragmentSource('
         #pragma header
         #define id vec2(0.,1.)
         #define k 1103515245U
@@ -122,14 +122,14 @@ class OldTVShader extends FlxShader
             gl_FragColor = col;
         }
     ')
-	public function new()
-	{
-		super();
-		iTime.value = [Timer.stamp()];
-	}
+  public function new()
+  {
+    super();
+    iTime.value = [Timer.stamp()];
+  }
 
-	public function update(elapsed:Float)
-	{
-		iTime.value[0] += elapsed;
-	}
+  public function update(elapsed:Float)
+  {
+    iTime.value[0] += elapsed;
+  }
 }

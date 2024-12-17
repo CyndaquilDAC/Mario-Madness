@@ -18,30 +18,37 @@ import openfl.events.Event;
 import openfl.geom.Rectangle;
 import vlc.LibVLC;
 
-class DSBitmap extends VlcBitmap {
-    public var renderSprite:FlxSprite;
+class DSBitmap extends VlcBitmap
+{
+  public var renderSprite:FlxSprite;
 
-    public override function new() {
-        super();
-        renderSprite = new FlxSprite(0, 0).makeGraphic(Std.int(width), Std.int(height), 0x00FFFFFF);
+  public override function new()
+  {
+    super();
+    renderSprite = new FlxSprite(0, 0).makeGraphic(Std.int(width), Std.int(height), 0x00FFFFFF);
+  }
+
+  override function onAddedToStage(e:Event):Void
+  {
+    super.onAddedToStage(e);
+    visible = false;
+  }
+
+  override function render()
+  {
+    try
+    {
+      super.render();
+
+      if (bitmapData != null && renderSprite.pixels != null)
+      {
+        renderSprite.pixels = bitmapData;
+      }
     }
-
-    override function onAddedToStage(e:Event):Void {
-        super.onAddedToStage(e);
-        visible = false;
+    catch (e)
+    {
+      trace(e.message);
     }
-
-    override function render() {
-        try {
-            super.render();
-
-            if (bitmapData != null && renderSprite.pixels != null) {
-                renderSprite.pixels = bitmapData;
-            }
-
-        } catch (e) {
-            trace(e.message);
-        }
-    }
+  }
 }
 #end

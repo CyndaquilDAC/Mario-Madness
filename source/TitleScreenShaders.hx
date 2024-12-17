@@ -6,8 +6,9 @@ import flixel.system.FlxAssets.FlxShader;
 /**
  * By @Ne_Eo_Twitch, modded a bit by lunar
  */
-class NTSCSFilter extends FlxShader {
-	@:glFragmentSource('
+class NTSCSFilter extends FlxShader
+{
+  @:glFragmentSource('
 	#pragma header
 
 	// DECODE NTSC AND CRT EFFECTS
@@ -92,20 +93,22 @@ class NTSCSFilter extends FlxShader {
 		gl_FragColor = vec4(mix(rgb, rgb * scanl, uScanlineEffect), out_color.a);
 	}
 	')
-	public function new(scanlineEffect:Float = 1) {
-		super();
-		this.uFrame.value = [0];
-		this.uScanlineEffect.value = [scanlineEffect];
-	}
+  public function new(scanlineEffect:Float = 1)
+  {
+    super();
+    this.uFrame.value = [0];
+    this.uScanlineEffect.value = [scanlineEffect];
+  }
 
-	public function update(elapsed:Float) {
-		this.uFrame.value[0] += elapsed;
-	}
+  public function update(elapsed:Float)
+  {
+    this.uFrame.value[0] += elapsed;
+  }
 }
 
 class NTSCGlitch extends FlxShader // stolen from that one popular vhs shader used in ourple guy criminal
 {
-	@:glFragmentSource('
+  @:glFragmentSource('
      #pragma header
 
     uniform float time;
@@ -159,29 +162,30 @@ class NTSCGlitch extends FlxShader // stolen from that one popular vhs shader us
         gl_FragColor = col;
     }
     ')
-	public override function new(?_glitch:Float = 2)
-	{
-		super();
+  public override function new(?_glitch:Float = 2)
+  {
+    super();
 
-		time.value = [0];
-		resolution.value = [FlxG.width, FlxG.height];
+    time.value = [0];
+    resolution.value = [FlxG.width, FlxG.height];
 
-		setGlitch(_glitch);
-	}
+    setGlitch(_glitch);
+  }
 
-	public inline function setGlitch(?amount:Float = 0)
-	{
-		glitchAmount.value = [amount];
-	}
+  public inline function setGlitch(?amount:Float = 0)
+  {
+    glitchAmount.value = [amount];
+  }
 
-	public inline function update(elapsed:Float)
-	{
-		time.value[0] += elapsed;
-	}
+  public inline function update(elapsed:Float)
+  {
+    time.value[0] += elapsed;
+  }
 }
 
-class TVStatic extends FlxShader {
-	@:glFragmentSource('
+class TVStatic extends FlxShader
+{
+  @:glFragmentSource('
     #pragma header
 
 	uniform float iTime;
@@ -212,22 +216,23 @@ class TVStatic extends FlxShader {
 		gl_FragColor = vec4(background-colour,1.0);
 	}
 	')
+  public override function new()
+  {
+    super();
+    iTime.value = [0];
+    strengthMulti.value = [1];
+    imtoolazytonamethis.value = [0];
+  }
 
-	public override function new() {
-		super();
-		iTime.value = [0];
-		strengthMulti.value = [1];
-		imtoolazytonamethis.value = [0];
-	}
-
-	public function update(elapsed:Float) {
-		iTime.value[0] += elapsed;
-	}
+  public function update(elapsed:Float)
+  {
+    iTime.value[0] += elapsed;
+  }
 }
 
 class Abberation extends FlxShader // https://www.shadertoy.com/view/ltByR3
 {
-	@:glFragmentSource('
+  @:glFragmentSource('
     #pragma header
     
     uniform float aberrationAmount;
@@ -248,14 +253,14 @@ class Abberation extends FlxShader // https://www.shadertoy.com/view/ltByR3
         );
     }
     ')
-	public override function new(?chrom:Float = 0)
-	{
-		super();
-		setChrom(chrom);
-	}
+  public override function new(?chrom:Float = 0)
+  {
+    super();
+    setChrom(chrom);
+  }
 
-	public inline function setChrom(?amount:Float = 0.1)
-	{
-		aberrationAmount.value = [amount];
-	}
+  public inline function setChrom(?amount:Float = 0.1)
+  {
+    aberrationAmount.value = [amount];
+  }
 }

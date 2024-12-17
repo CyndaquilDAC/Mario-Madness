@@ -13,25 +13,23 @@ import lime.app.Application;
 
 class FlashingState extends MusicBeatState
 {
-	public static var leftState:Bool = false;
+  public static var leftState:Bool = false;
 
-	var warnImg:FlxSprite;
+  var warnImg:FlxSprite;
 
-	override function create()
-	{
-		super.create();
+  override function create()
+  {
+    super.create();
 
-		warnImg = new FlxSprite().loadGraphic(Paths.image("warningscreen"));
-		warnImg.antialiasing = false;
-		warnImg.updateHitbox();
-		warnImg.screenCenter();
-		add(warnImg);
+    warnImg = new FlxSprite().loadGraphic(Paths.image("warningscreen"));
+    warnImg.antialiasing = false;
+    warnImg.updateHitbox();
+    warnImg.screenCenter();
+    add(warnImg);
+  }
 
-		
-	}
-
-	override function update(elapsed:Float)
-	{
-		super.update(elapsed);
-	}
+  override function update(elapsed:Float)
+  {
+    super.update(elapsed);
+  }
 }

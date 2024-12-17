@@ -4,7 +4,7 @@ import flixel.system.FlxAssets.FlxShader;
 
 class BloomShader extends FlxShader // BLOOM SHADER BY BBPANZU
 {
-	@:glFragmentSource('
+  @:glFragmentSource('
 	#pragma header
 
     // GAUSSIAN BLUR SETTINGS
@@ -37,13 +37,13 @@ class BloomShader extends FlxShader // BLOOM SHADER BY BBPANZU
 
 	}
 	')
-	public function new()
-	{
-		super();
+  public function new()
+  {
+    super();
 
-		Size.value = [18.0];
-		Quality.value = [8.0];
-		dim.value = [2.0];
-		Directions.value = [16.0];
-	}
+    Size.value = [18.0];
+    Quality.value = [8.0];
+    dim.value = [2.0];
+    Directions.value = [16.0];
+  }
 }

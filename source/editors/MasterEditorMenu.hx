@@ -17,97 +17,96 @@ using StringTools;
 
 class MasterEditorMenu extends MusicBeatState
 {
-	var options:Array<String> = [
-		'Week Editor',
-		'Menu Character Editor',
-		'Dialogue Editor',
-		'Dialogue Portrait Editor',
-		'Character Editor'
-	];
-	private var grpTexts:FlxTypedGroup<Alphabet>;
+  var options:Array<String> = [
+    'Week Editor',
+    'Menu Character Editor',
+    'Dialogue Editor',
+    'Dialogue Portrait Editor',
+    'Character Editor'
+  ];
+  private var grpTexts:FlxTypedGroup<Alphabet>;
 
-	private var curSelected = 0;
+  private var curSelected = 0;
 
-	override function create()
-	{
-		FlxG.camera.bgColor = FlxColor.BLACK;
-		#if desktop
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Editors Main Menu", null);
-		#end
+  override function create()
+  {
+    FlxG.camera.bgColor = FlxColor.BLACK;
+    #if desktop
+    // Updating Discord Rich Presence
+    DiscordClient.changePresence("Editors Main Menu", null);
+    #end
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.scrollFactor.set();
-		bg.color = 0xFF353535;
-		add(bg);
+    var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+    bg.scrollFactor.set();
+    bg.color = 0xFF353535;
+    add(bg);
 
-		grpTexts = new FlxTypedGroup<Alphabet>();
-		add(grpTexts);
+    grpTexts = new FlxTypedGroup<Alphabet>();
+    add(grpTexts);
 
-		for (i in 0...options.length)
-		{
-			var leText:Alphabet = new Alphabet(0, (70 * i) + 30, options[i], true, false);
-			leText.isMenuItem = true;
-			leText.targetY = i;
-			grpTexts.add(leText);
-		}
+    for (i in 0...options.length)
+    {
+      var leText:Alphabet = new Alphabet(0, (70 * i) + 30, options[i], true, false);
+      leText.isMenuItem = true;
+      leText.targetY = i;
+      grpTexts.add(leText);
+    }
 
-		changeSelection();
-		super.create();
-	}
+    changeSelection();
+    super.create();
+  }
 
-	override function update(elapsed:Float)
-	{
-		if (controls.UI_UP_P)
-		{
-			changeSelection(-1);
-		}
-		if (controls.UI_DOWN_P)
-		{
-			changeSelection(1);
-		}
+  override function update(elapsed:Float)
+  {
+    if (controls.UI_UP_P)
+    {
+      changeSelection(-1);
+    }
+    if (controls.UI_DOWN_P)
+    {
+      changeSelection(1);
+    }
 
-		if (controls.BACK)
-		{
-			MusicBeatState.switchState(new MainMenuState());
-		}
+    if (controls.BACK)
+    {
+      MusicBeatState.switchState(new MainMenuState());
+    }
 
-		if (controls.ACCEPT)
-		{
-			switch(options[curSelected]) {
-				case 'Character Editor':
-					LoadingState.loadAndSwitchState(new CharacterEditorState(Character.DEFAULT_CHARACTER, false));
-			}
-			FlxG.sound.music.volume = 0;
-		}
-		
-		var bullShit:Int = 0;
-		for (item in grpTexts.members)
-		{
-			item.targetY = bullShit - curSelected;
-			bullShit++;
+    if (controls.ACCEPT)
+    {
+      switch (options[curSelected])
+      {
+        case 'Character Editor':
+          LoadingState.loadAndSwitchState(new CharacterEditorState(Character.DEFAULT_CHARACTER, false));
+      }
+      FlxG.sound.music.volume = 0;
+    }
 
-			item.alpha = 0.6;
-			// item.setGraphicSize(Std.int(item.width * 0.8));
+    var bullShit:Int = 0;
+    for (item in grpTexts.members)
+    {
+      item.targetY = bullShit - curSelected;
+      bullShit++;
 
-			if (item.targetY == 0)
-			{
-				item.alpha = 1;
-				// item.setGraphicSize(Std.int(item.width));
-			}
-		}
-		super.update(elapsed);
-	}
+      item.alpha = 0.6;
+      // item.setGraphicSize(Std.int(item.width * 0.8));
 
-	function changeSelection(change:Int = 0)
-	{
-		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
+      if (item.targetY == 0)
+      {
+        item.alpha = 1;
+        // item.setGraphicSize(Std.int(item.width));
+      }
+    }
+    super.update(elapsed);
+  }
 
-		curSelected += change;
+  function changeSelection(change:Int = 0)
+  {
+    FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 
-		if (curSelected < 0)
-			curSelected = options.length - 1;
-		if (curSelected >= options.length)
-			curSelected = 0;
-	}
+    curSelected += change;
+
+    if (curSelected < 0) curSelected = options.length - 1;
+    if (curSelected >= options.length) curSelected = 0;
+  }
 }
